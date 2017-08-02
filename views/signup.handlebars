@@ -1,0 +1,74 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<img id="landing-wolf-icon" src="static/assets/images/wolf_icon_white.png" alt="Hungry Lonewolf Icon">
+			<h3 id="landing-icon-title">HUNGRY LONEWOLF</h3>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-3"></div>
+		<div class="col-md-6 authentication" id="authentication-signup">
+			<div class="authentication-header">
+				<h3 id="description-header">Gain Instant Access</h3>
+			</div>
+			<div class="authentication-body">
+				<div class="sign-up">
+					<form class="form-inline" action="/signup" method="POST">
+						<div class="input-group whole">
+							<input type="text" class="form-control authentication-input" id="first-name" placeholder="First Name">
+							<input type="email" class="form-control authentication-input" id="last-name" placeholder="Last Name">
+						</div>
+						<div class="input-group whole">
+							<input type="text" class="form-control authentication-input" id="image-url" placeholder="Image Link">
+						</div>
+						<div class="input-group whole">
+							<textarea class="form-control" rows="5" id="about" placeholder="About Yourself"></textarea>
+						</div>
+						<div class="input-group whole">
+							<input type="text" class="form-control authentication-input" id="birthday" placeholder="Birthday" onfocus="(this.type='date')" onblur="(this.type='text')">
+							<select class="form-control authentication-input whole" id="gender">
+								<option disabled selected>-- Gender --</option>
+								<option value="1">Female</option>
+								<option value="2">Male</option>
+								<option value="3">Prefer Not To Answer</option>
+							</select>
+						</div>
+						<div class="input-group whole">
+							<input type="text" class="form-control authentication-input" id="phone" placeholder="Phone">
+						</div>
+						<div class="input-group whole"> 
+							<input type="email" class="form-control authentication-input" id="email" placeholder="Email">
+						</div>
+						<div class="input-group whole">
+							<input type="password" class="form-control authentication-input" id="password" placeholder="Create Password">
+						</div>
+						<div class="input-group whole">
+							<input type="password" class="form-control authentication-input" id="password" placeholder="Confirm Password">
+						</div>
+						<div class="row">
+							<div class="col-md-3"></div>
+							<div class="col-md-6">
+								<button type="submit" class="authentication-button">SIGN UP</button>
+							</div>
+							<div class="col-md-3"></div>
+						</div>
+					</form>
+				</div>
+				<div class="login">
+					<p class="other-action">ALREADY A MEMBER? <a href="/login" id="login-now">LOG IN</a></p>
+				</div>			
+			</div>
+		</div>
+		<div class="col-md-3"></div>
+	</div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+	function changeBackground() {
+		$("body").css("background-image", "url('/static/assets/images/homepage_background_2.jpg')");
+		$("body").css("background-size", "cover");
+		$("body").css("width", "100%");
+	};
+	changeBackground();
+</script>

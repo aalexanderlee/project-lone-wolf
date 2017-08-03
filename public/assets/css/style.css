@@ -18,9 +18,27 @@
 	background-color: #424447;
 }
 
-.menu-custom {
+#list-custom {
 	margin-top: 20px;
 	margin-right: 3px;
+}
+
+#hamburger-custom {
+	margin-top: 18px;
+}
+
+.navbar-default .navbar-toggle:focus, 
+.navbar-default .navbar-toggle:hover {
+	background-color: #bf3d22;
+}
+
+.navbar-default .navbar-toggle {
+	border-color: #ffffff;
+}
+
+
+.navbar-default .navbar-toggle .icon-bar {
+	background-color: #ffffff;
 }
 
 .navbar-default .navbar-nav>li>a {
@@ -138,30 +156,30 @@ a.anchor {
 	width: 100%;
 }
 
-#first-name, #birthday {
+#signup-first-name, #signup-birthday {
 	border-radius: 0px;
 	float: left;
 	width: 50%;
 }
 
-#last-name, #gender {
+#signup-last-name, #signup-gender {
 	border-radius: 0px;
 	float: right;
 	width: 50%;
 }
 
-#gender {
+#signup-gender {
 	border: none;
 	outline: 1px solid #cccccc;
 	outline-offset: -1px;
 }
 
-#about {
+#signup-about {
 	padding: 10px 12px;
 	resize: none; 
 }
 
-#email {
+#signup-email {
 	margin-bottom: 10px;
 }
 
@@ -256,6 +274,7 @@ button.accordion.active:after {
 .panel.show {
 	max-height: 500px;
 	opacity: 1; /*Make the content inside the each panel visible when you are showing that panel/showing the content*/
+	overflow-y: auto;
 }
 
 .panel.hide {
@@ -265,7 +284,8 @@ button.accordion.active:after {
 
 .panel-content {
 	font-family: 'Muli', sans-serif;
-	padding: 20px;
+	padding-bottom: 20px;
+	padding-top: 20px;
 }
 
 .past-plans {
@@ -284,8 +304,9 @@ button.accordion.active:after {
 }
 
 .section-padding {
-	padding-bottom: 40px;
-	padding-top: 40px;
+	padding: 40px;
+/*	padding-bottom: 40px;
+	padding-top: 40px;*/
 }
 
 #profile-image {
@@ -315,3 +336,129 @@ button.accordion.active:after {
 	text-align: center;
 }
 
+.modal-header {
+	background-color: #424447;
+	color: #ffffff;
+	font-family: 'Bitter', serif;
+}
+
+.modal-body {
+	font-family: 'Montserrat', sans-serif;
+	margin-left: 10px;
+	margin-right: 10px;
+	overflow: auto;
+}
+
+.survey-headers {
+	background-color: #d0e1f9;
+	color: #000000;
+	font-size: 15px;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	padding-top: 10px;
+}
+
+.input-group-addon,
+input#survey-date.form-control,
+input#survey-location.form-control {
+	border-radius: 0px;
+}
+
+#survey-age, #survey-cuisine, #survey-price-range {
+	border: none;
+	margin-top: 10px;
+	outline: 1px solid #cccccc;
+	outline-offset: -1px;
+}
+
+input[type=radio] {
+	font-size: 10px;
+	margin: 5px 0 0;
+}
+
+.close {
+	color: #ffffff;
+	opacity: 0.5;
+}
+
+#time, #ideal-meal-buddy {
+	margin-bottom: 30px;
+}
+
+/*#survey-date-error, 
+#survey-location-error,
+#survey-gender-error,
+#survey-age-error,
+#survey-meal-error,
+#survey-cuisine-error,
+#survey-price-range-error {
+	color: #a94442;
+	display: none;
+	font-size: 12px;
+}
+*/
+
+#closest-match-name {
+	font-size: 25px;
+	margin-top: 10px;
+}
+
+#closest-match-image {
+	float: left;
+	margin-bottom: 20px;
+	margin-right: 20px;
+	width: 300px;
+}
+
+@media screen and (max-width: 768px) {
+	.navbar-default .navbar-nav>li>a {
+		border-right: none;
+		color: #ffffff;
+		font-family: 'Montserrat', sans-serif;
+		padding-bottom: 10px;
+		padding-left: 20px;
+		padding-right: 20px;
+		padding-top: 0px;
+	}
+
+	#home-icon-title {
+		margin-left: 10px;
+	}
+
+	#profile-image {
+		float: left;
+		margin-right: 20px;
+		width: 300px;
+	}
+}
+
+@media screen and (max-width: 500px) {
+	#home-icon-title {
+		font-size: 20px;
+	}
+
+	#home-wolf-icon {
+		height: 35px;
+	}
+
+	#hamburger-custom {
+		margin-top: 13px;
+	}
+
+	#profile-image {
+		float: left;
+		margin-right: 0px;
+		width: 100%;
+	}
+
+	#profile-description {
+		clear: both;
+		padding-top: 10px;
+	}
+
+	#closest-match-image {
+		width: 100%;
+	}
+}

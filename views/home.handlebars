@@ -1,26 +1,30 @@
 <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
 	<div class="container-fluid">
 		<div class="navbar-header">
+			{{!-- Creates the hamburger button --}}
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" id="hamburger-custom">
+				<span class="sr-only">Toggle navigation</span>
+				{{!-- Creates the 3 lines for the hamburgers --}}
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
 			<h2 id="home-icon-title">
 				<img id="home-wolf-icon" src="static/assets/images/wolf_icon_white.png" alt="Hungry Lonewolf Icon"> Hungry Lonewolf
 			</h2>
 		</div>
-{{!-- 		<ul class="nav navbar-nav navbar-right menu-custom">
-			<li><a href="#plan">Plan</a></li>
-			<li><a href="#potential">Potential</a></li>
-			<li><a href="#past">Past</a></li>
-			<li><a href="#" id="no-border">Logout</a></li>
-		</ul> --}}
-		<div class="collapse navbar-collapse navbar-right menu-custom" id="">
-			<ul class="nav navbar-nav">
+
+		<div id="navbar" class="navbar-collapse collapse">
+			<ul class="nav navbar-nav navbar-right" id="list-custom">
 				<li><a href="#plan">Plan</a></li>
 				<li><a href="#potential">Potential</a></li>
 				<li><a href="#past">Past</a></li>
-				<li><a href="#" id="no-border">Blog</a></li>
+				<li><a href="#" id="no-border">Logout</a></li>
 			</ul>
 		</div>
 	</div>
 </nav>
+
 
 <a class="anchor" id="plan"></a>
 <section id="plan-section">
@@ -35,14 +39,153 @@
 				<div class="row">
 					<div class="col-md-5"></div>
 					<div class="col-md-2">
-						<a href="/survey"><button type="submit" class="authentication-button">BEGIN SURVEY</button></a>
+						<button type="submit" class="authentication-button" id="begin-survey" data-target="#survey">BEGIN SURVEY</button>
 					</div>
 					<div class="col-md-5"></div>
 				</div>
 			</div>
 		</div>
-
 	</div>
+
+	{{!-- Survey Modal --}}
+	<div class="container">
+		<div id="survey" class="modal fade" role="dialog">
+			<div class="modal-dialog modal-md">
+
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h2 class="modal-title">Survey</h2>
+					</div>
+					<div class="modal-body">
+						<form>
+							<div id="time">
+								<h3 class="survey-headers">Time</h3>
+								{{!-- Date --}}
+								<div class="input-group">
+									<span class="input-group-addon icons" id="calendar-icon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" id="survey-date" name="date" placeholder="Date" onfocus="(this.type='date')" onblur="(this.type='text')">
+								</div>
+								{{!-- <span id="survey-date-error">* Please input a date.</span> --}}
+								{{!-- Location --}}
+								<div class="input-group">
+									<span class="input-group-addon icons" id="location-icon"><i class="fa fa-location-arrow" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" id="survey-location" name="location" placeholder="City" onfocus="geolocate()">
+								</div>
+								{{!-- <span id="survey-location-error">* Please input a city.</span> --}}
+							</div>
+							<div id="ideal-meal-buddy">
+								<h3 class="survey-headers">Ideal Meal Buddy</h3>
+								{{!-- Gender --}}
+								<div>
+									<label class="radio-inline gender-radio">
+										<input type="radio" name="gender-radio" id="male-radio" value="male"> Male
+									</label>
+									<label class="radio-inline gender-radio">
+										<input type="radio" name="gender-radio" id="female-radio" value="female"> Female
+									</label>
+									<label class="radio-inline gender-radio">
+										<input type="radio" name="gender-radio" id="no-preference-radio" value="no preference"> No Preference
+									</label>
+								</div>
+								{{!-- <span id="survey-gender-error">* Please select your gender preference.</span> --}}
+								{{!-- Age --}}
+								<select class="form-control" id="survey-age">
+									<option disabled selected>Select Age</option>
+									<option value="1">18 - 24</option>
+									<option value="2">25 - 34</option>
+									<option value="3">35 - 44</option>
+									<option value="4">45 - 54</option>
+									<option value="5">Over 55</option>
+								</select>
+								{{!-- <span id="survey-age-error">* Please select your age preference.</span> --}}
+							</div>
+							<div id="adventure-details">
+								<h3 class="survey-headers">Adventure Details</h3>
+								{{!-- Meal of the Day --}}
+								<div>
+									<label class="radio-inline meal-of-the-day-radio">
+										<input type="radio" name="meal-of-the-day-radio" id="breakfast-radio" value="breakfast"> Breakfast
+									</label>
+									<label class="radio-inline meal-of-the-day-radio">
+										<input type="radio" name="meal-of-the-day-radio" id="lunch-radio" value="lunch"> Lunch
+									</label>
+									<label class="radio-inline meal-of-the-day-radio">
+										<input type="radio" name="meal-of-the-day-radio" id="dinner-radio" value="dinner"> Dinner
+									</label>
+									<label class="radio-inline meal-of-the-day-radio">
+										<input type="radio" name="meal-of-the-day-radio" id="late-night-radio" value="late night"> Late Night
+									</label>
+								</div>
+								{{!-- <span id="survey-meal-error">* Please select your meal preference.</span> --}}
+								{{!-- Cuisine --}}
+								<select multiple class="form-control" id="survey-cuisine">
+									<option disabled selected>Select Cuisine</option>
+									<option value="chinese">Chinese</option>
+									<option value="japanese">Japanese</option>
+									<option value="korean">Korean</option>
+									<option value="thai">Thai</option>
+									<option value="indian">Indian</option>
+									<option value="american">American</option>
+									<option value="mexican">Mexican</option>
+									<option value="italian">Italian</option>
+									<option value="french">French</option>
+									<option value="mediterranean">Mediterranean</option>
+									<option value="middle eastern">Middle Eastern</option>
+									<option value="other">Other</option>
+								</select>
+								{{!-- <span id="survey-cuisine-error">* Please select your cuisine preference.</span> --}}
+								{{!-- Cuisine Price Range --}}
+								<select class="form-control" id="survey-price-range">
+									<option disabled selected>Select Price Range</option>
+									<option value="1">$ (Inexpensive)</option>
+									<option value="2">$$ (Moderate)</option>
+									<option value="3">$$$ (Pricey)</option>
+									<option value="4">$$$$ (Ultra High-End)</option>
+								</select>
+								{{!-- <span id="survey-price-range-error">* Please select your price range preference.</span> --}}
+							</div>
+							<br>
+							<div class="row">
+								<div class="col-md-4"></div>
+								<div class="col-md-4">
+									<button type="submit" class="authentication-button" id="submit-survey" data-target="#closest-match"><i class="fa fa-check-circle" aria-hidden="true"></i> SUBMIT</button>									
+								</div>
+								<div class="col-md-4"></div>
+							</div>
+						</form>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	{{!-- Closest Match Modal --}}
+	<div class="container">
+		<div id="closest-match" class="modal fade" role="dialog">
+			<div class="modal-dialog modal-md">
+
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h2 class="modal-title">Ideal Meal Buddy</h2>
+					</div>
+					<div class="modal-body">
+						<h2 id="closest-match-name">Casey Kwok</h2>
+						<img src="static/assets/images/profile_image.jpg" class="img-responsive" alt="Closest Match Photo" id="closest-match-image">
+						<p><strong>DATE: </strong><span id="closest-match-date">August 1, 2017</span></p>
+						<p><strong>MEAL: </strong><span id="closest-match-meal">Lunch</span></p>
+						<p><strong>CUISINE PREFERENCES: </strong><span id="closest-match-cuisine">Chinese, Korean, Japanese</span></p>
+						<p><strong>AGE GROUP: </strong><span id="closest-match-age">22 - 32</span></p>
+						<p>Want to learn more about Casey? Check under 'Potential Plans' for the full bio!</p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
 </section>
 
 <a class="anchor" id="potential"></a>
@@ -60,19 +203,13 @@
 				<button class="accordion">August 1, 2017 (Monday): Dinner With Casey Kwok</button>
 				<div class="panel">
 					<div class="row panel-content">
-						<div class="col-md-4">
+						<div class="col-md-4 col-sm-6">
 							<img id="profile-image" src="static/assets/images/profile_image.jpg" class="img-thumbnail" alt="Profile Image">
 						</div>
-						<div class="col-md-8">
+						<div class="col-md-8 col-sm-6" id="profile-description">
 							<h3 id="date-name">Casey Kwok <a id="date-phone" href="tel:+12345678901"><i class="fa fa-phone" aria-hidden="true"></i></a> <a id="date-email" href="mailto:someone@example.com?Subject=Hello!%20This%20is%20Billy%20from%20Hungry%20Lonewolf!" target="_top"><i class="fa fa-envelope" aria-hidden="true"></i></a></h3>
-							<div class="row">
-								<div class="col-md-6">
-									<p id="date-age"><strong>Age: </strong>22 - 32</p>
-								</div>
-								<div class="col-md-6">
-									<p id="date-gender"><strong>Gender: </strong>Female</p>
-								</div>
-							</div>
+							<p id="date-age"><strong>Age: </strong>22 - 32</p>
+							<p id="date-gender"><strong>Gender: </strong>Female</p>
 							<p id="date-bio"><strong>Biography: </strong>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 							<p id="date-cuisine-preferences"><strong>Cuisine Preferences: </strong>Japanese, Italian, Korean</p>
 							<p id="date-cuisine-price"><strong>Price Range: </strong>$$</p>
@@ -88,22 +225,16 @@
 				<button class="accordion">August 1, 2017 (Monday): Dinner With Casey Kwok</button>
 				<div class="panel">
 					<div class="row panel-content">
-						<div class="col-md-4">
+						<div class="col-md-4 col-sm-6">
 							<img id="profile-image" src="static/assets/images/profile_image.jpg" class="img-thumbnail" alt="Profile Image">
 						</div>
-						<div class="col-md-8">
-							<h3 id="date-name">CASEY KWOK <a id="date-phone" href="tel:+12345678901"><i class="fa fa-phone" aria-hidden="true"></i></a> <a id="date-email" href="mailto:someone@example.com?Subject=Hello!%20This%20is%20Billy%20from%20Hungry%20Lonewolf!" target="_top"><i class="fa fa-envelope" aria-hidden="true"></i></a></h3>
-							<div class="row">
-								<div class="col-md-6">
-									<p id="date-age"><strong>AGE: </strong>22 - 32</p>
-								</div>
-								<div class="col-md-6">
-									<p id="date-gender"><strong>GENDER: </strong>Female</p>
-								</div>
-							</div>
-							<p id="date-bio"><strong>BIOGRAPHY: </strong>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-							<p id="date-cuisine-preferences"><strong>CUISINE PREFERENCES: </strong>Japanese, Italian, Korean</p>
-							<p id="date-cuisine-price"><strong>PRICE RANGE: </strong>$$</p>
+						<div class="col-md-8 col-sm-6" id="profile-description">
+							<h3 id="date-name">Casey Kwok <a id="date-phone" href="tel:+12345678901"><i class="fa fa-phone" aria-hidden="true"></i></a> <a id="date-email" href="mailto:someone@example.com?Subject=Hello!%20This%20is%20Billy%20from%20Hungry%20Lonewolf!" target="_top"><i class="fa fa-envelope" aria-hidden="true"></i></a></h3>
+							<p id="date-age"><strong>Age: </strong>22 - 32</p>
+							<p id="date-gender"><strong>Gender: </strong>Female</p>
+							<p id="date-bio"><strong>Biography: </strong>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+							<p id="date-cuisine-preferences"><strong>Cuisine Preferences: </strong>Japanese, Italian, Korean</p>
+							<p id="date-cuisine-price"><strong>Price Range: </strong>$$</p>
 						</div>
 					</div>
 				</div>
@@ -153,5 +284,114 @@
 		$("body").css("padding-top", "70px");
 	};
 	changePadding();
+
+	$("#begin-survey").on("click", function(event) {
+		event.preventDefault();
+		$("#survey").modal("toggle");
+	});
+
+	$("#submit-survey").on("click", function(event) {
+		event.preventDefault();
+
+		function resetCSS() {
+			$("span#calendar-icon.input-group-addon.icons").css("background-color", "#eee");
+			$("span#calendar-icon.input-group-addon.icons").css("border-color", "#ccc");
+			$("span#calendar-icon.input-group-addon.icons").css("color", "#555");
+			$("input#survey-date.form-control").css("border-color", "#ccc");
+			$("span#location-icon.input-group-addon.icons").css("background-color", "#eee");
+			$("span#location-icon.input-group-addon.icons").css("border-color", "#ccc");
+			$("span#location-icon.input-group-addon.icons").css("color", "#555");
+			$("input#survey-location.form-control").css("border-color", "#ccc");	
+			$("#survey-age").css("outline", "1px solid #cccccc");
+			$("#survey-cuisine").css("outline", "1px solid #cccccc");
+			$("#survey-price-range").css("outline", "1px solid #cccccc");
+		};
+
+		function validateForm() {
+			let valid = true;
+			// If user did not provide a date
+			if (!$("#survey-date").val()) {
+				$("span#calendar-icon.input-group-addon.icons").css("background-color", "#f2dede");
+				$("span#calendar-icon.input-group-addon.icons").css("border-color", "#a94442");
+				$("span#calendar-icon.input-group-addon.icons").css("color", "#a94442");
+				$("input#survey-date.form-control").css("border-color", "#a94442");
+				// $("#survey-date-error").show();
+				valid = false;
+			} else {
+				$("span#calendar-icon.input-group-addon.icons").css("background-color", "#dff0d8");
+				$("span#calendar-icon.input-group-addon.icons").css("border-color", "#3c763d");
+				$("span#calendar-icon.input-group-addon.icons").css("color", "#3c763d");
+				$("input#survey-date.form-control").css("border-color", "#3c763d");					
+			}
+			// If user does not provide a location
+			if (!$("#survey-location").val()) {
+				$("span#location-icon.input-group-addon.icons").css("background-color", "#f2dede");
+				$("span#location-icon.input-group-addon.icons").css("border-color", "#a94442");
+				$("span#location-icon.input-group-addon.icons").css("color", "#a94442");
+				$("input#survey-location.form-control").css("border-color", "#a94442");
+				// $("#survey-location-error").show();
+				valid = false;
+			} else {
+				$("span#location-icon.input-group-addon.icons").css("background-color", "#dff0d8");
+				$("span#location-icon.input-group-addon.icons").css("border-color", "#3c763d");
+				$("span#location-icon.input-group-addon.icons").css("color", "#3c763d");
+				$("input#survey-location.form-control").css("border-color", "#3c763d");					
+			}
+			// If user does not provide a gender preference
+			if (!$("#male-radio").is(":checked") && !$("#female-radio").is(":checked") && !$("#no-preference-radio").is(":checked")) {
+				$(".gender-radio").css("color", "#a94442");
+				// $("#survey-gender-error").show();
+				valid = false;
+			} else {
+				$(".gender-radio").css("color", "#000000");	
+			}
+			// If user does not provide an age preference
+			if (!$("#survey-age").val()) {
+				$("#survey-age").css("outline", "1px solid #a94442");
+				// $("#survey-age-error").show();
+			} else {
+				$("#survey-age").css("outline", "1px solid #3c763d");	
+			}
+			// If user does not provide a meal preference
+			if (!$("#breakfast-radio").is(":checked") && !$("#lunch-radio").is(":checked") && !$("#dinner-radio").is(":checked") && !$("#late-night-radio").is(":checked")) {
+				$(".meal-of-the-day-radio").css("color", "#a94442");
+				// $("#survey-meal-error").show();
+				valid = false;
+			} else {
+				$(".meal-of-the-day-radio").css("color", "#000000");	
+			}
+			// If user does not provide a cuisine preference
+			if ($("#survey-cuisine").val().length === 0) {
+				$("#survey-cuisine").css("outline", "1px solid #a94442");
+				// $("#survey-cuisine-error").show();
+			} else {
+				$("#survey-cuisine").css("outline", "1px solid #3c763d");
+			}
+			// If user does not provide a price range
+			if (!$("#survey-price-range").val()) {
+				$("#survey-price-range").css("outline", "1px solid #a94442");
+				// $("#survey-price-range-error").show();
+			} else {
+				$("#survey-price-range").css("outline", "1px solid #3c763d");
+			}			
+			if (!valid) {
+				alert("Please fill out all fields.");
+			}
+			return valid;
+		};
+
+		if (validateForm()) {
+			alert("Form is validated!");
+			$("#survey-date").val("");
+			$("#survey-location").val("");
+			$("input[type='radio']").prop("checked", false);
+			$("#survey-age").val("Select Age");
+			$("#survey-cuisine").val("Select Cuisine");
+			$("#survey-price-range").val("Select Price Range");
+			resetCSS();
+			$("#survey").modal("hide");
+			$("#closest-match").modal("toggle");
+		}
+	});
 
 </script>

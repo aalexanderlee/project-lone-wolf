@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hungry LoneWolf</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+	<div class="container">
+		<h1>Survey Questions</h1>
+    <hr>
+    <div class="panel panel-default">
+      <div class="panel-heading"><h2><span class="glyphicon glyphicon-user" style="margin-right: 10px"></span>The Perfect Meal</h2></div>
+      <div class="panel-body">
+        <form>
+           <div class="form-group">
+            <label for="email">Your Email Address (Required)</label>
+            <input type="email" class="form-control" id="email" name="email">
+          </div>
+          <div class="form-group">
+            <label for="gender">Your Gender (Required)</label>
+              <select class="form-control" id="gender">
+                  <option disabled selected>-- Please Select --</option>
+                  <option value ="male">Male</option>
+                  <option value="female">Female</option>
+              </select>
+          </div>
+          <div class="form-group">
+            <label for="birthday">Your Age (Required)</label>
+              <select class="form-control" id="birthday">
+                <option disabled selected>-- Please Select --</option>
+                <option value ="1">18 ~ 24</option>
+                <option value="2">25 ~ 34</option>
+                <option value="3">35 ~ 44</option>
+                <option value="4">45 ~ 54</option>
+                <option value="5">55+</option>
+              </select>
+          </div>
+          <div class="form-group">
+            <label for="date">Meet Up Date (Required)</label>
+            <div id="calendar"></div>
+          </div>
+          <div class="form-group">
+            <label for="location">Current City (Required)</label>
+            <input type="text" class="form-control" id="location" name="location" onFocus="geolocate()">
+          </div>
+          <div class="form-group">
+            <h3>Question 1</h3>
+              <label for="q1">What meal of the day do you need a date ?</label>
+              <select class="form-control" id="q1">
+                <option disabled selected>-- Please Select --</option>
+                <option value ="breakfast">Breakfast</option>
+                <option value="lunch">Lunch</option>
+                <option value="dinner">Dinner</option>
+                <option value="late night">Late Night</option>
+              </select>
+          </div>
+          <div class="form-group">
+            <h3>Question 2</h3>
+              <label for="q2">What is your date's age range ?</label>
+              <select class="form-control" id="q2">
+                <option disabled selected>-- Please Select --</option>
+                <option value ="1">18 ~ 24</option>
+                <option value="2">25 ~ 34</option>
+                <option value="3">35 ~ 44</option>
+                <option value="4">45 ~ 54</option>
+                <option value="5">55+</option>
+              </select>
+          </div>
+          <div class="form-group">
+            <h3>Question 3</h3>
+              <label for="q3">What is your date's gender ?</label>
+              <select class="form-control" id="q3">
+                <option disabled selected>-- Please Select --</option>
+                <option value ="male">Male</option>
+                <option value="female">Female</option>
+                <option value="no preference">No Preference</option>
+              </select>
+          </div>
+           <div class="form-group">
+            <h3>Question 4</h3>
+              <label for="q4">What type of cuisine are you feeling ?</label>
+              <select multiple class="form-control" id="q4">
+                <option disabled selected>-- Select Multiple Options by Holding Command (Mac) or Cntrl (PC) --</option>
+                <option value ="chinese">Chinese</option>
+                <option value="japanese">Japanese</option>
+                <option value="korean">Korean</option>
+                <option value="thai">Thai</option>
+                <option value="indian">Indian</option>
+                <option value="american">American</option>
+                <option value="mexican">Mexican</option>
+                <option value="italian">Italian</option>
+                <option value="french">French</option>
+                <option value="mediterranean">Mediterranean</option>
+                <option value="middle eastern">Middle Eastern</option>
+                <option value="other">Other</option>
+              </select>
+          </div>
+           <div class="form-group">
+            <h3>Question 5</h3>
+              <label for="q5">What is your preferred price range ?</label>
+              <select class="form-control" id="q5">
+                <option disabled selected>-- Please Select --</option>
+                <option value ="1">$ (Inexpensive)</option>
+                <option value="2">$$ (Moderate)</option>
+                <option value="3">$$$ (Pricey)</option>
+                <option value="4">$$$$ (Ultra High-End)</option>
+              </select>
+          </div>
+          <div id="submit-btn">
+            <button type="submit" class="btn btn-primary" id="submit" style="width: 100%"><span class="glyphicon glyphicon-send" style="margin-right: 10px"></span>Submit Survey</button>
+          </div>
+        </form>
+      </div>
+    </div>
+	</div>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA3zxPOYEjaZFkWhGi4WRjUVWXXXF7GRUA&libraries=places&region=US&callback=initAutocomplete"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+  <!-- the script source is /assets/js/survey.js instead of public/assets/js/survey.js because in server.js we specified 'public' as the static so we are already starting from public when serving static contents (everyhing in public folder) -->
+  <script src="/assets/js/survey.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</body>
+</html>

@@ -70,7 +70,7 @@ function coordConvert () {
 
           var cusineParsed = cuisineParser($("#q4").val()); 
 
-          var user = {
+          var answer = {
             email: $("#email").val().trim(),
             user_gender: $("#gender").val().trim(), 
             birthday: $("#birthday").val().trim(), 
@@ -84,9 +84,9 @@ function coordConvert () {
             price: $("#q5").val() 
           }; 
 
-          console.log(user)
+          console.log(answer)
 
-          $.post("/api/users", user, function(data) {
+          $.post("/api/answers", answer, function(data) {
            
         });
   });

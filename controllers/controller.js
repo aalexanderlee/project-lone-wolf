@@ -8,13 +8,13 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "/../views/test.html"));
   });
 
-  app.get("/api/users", function(req,res){
+  app.get("/api/answers", function(req,res){
     db.Answers.findAll({}).then(function(dbAnswers) {
       res.json(dbAnswers);
     });
   }); 
 
-  app.post("/api/users", function(req, res) {
+  app.post("/api/answers", function(req, res) {
     console.log("inside post route")
     console.log(req.body)
     db.Answers.create({
@@ -50,32 +50,51 @@ module.exports = function(app) {
               price: dbAnswers.price  
             }   
           }).then(function(results) {
-            console.log("=========results==========")
+              console.log("=========results==========")
 
-            if (results.length > 0) {
-              for (i = 0 ; i < results.length ; i++) {
-                console.log(results[i].dataValues)
-                var otherSplit = results[i].dataValues.cuisine.split(";")
-                for (j = 0 ; j < otherSplit.length ; j++) {
-                  if (userSplit.indexOf(otherSplit[j]) >= 0) {
-                    commonArr.push(results[i].dataValues)
+              if (results.length > 0) {
+                for (i = 0 ; i < results.length ; i++) {
+                  console.log(results[i].dataValues)
+                  var otherSplit = results[i].dataValues.cuisine.split(";")
+                  for (j = 0 ; j < otherSplit.length ; j++) {
+                    if (userSplit.indexOf(otherSplit[j]) >= 0) {
+                      commonArr.push(results[i].dataValues)
+                    }
                   }
                 }
+                console.log("======commonArr========")
+                console.log(commonArr)
+
+              var randomNumber = Math.floor(Math.random()*commonArr.length); 
+              var selected = commonArr[randomNumber]; 
+              console.log("this is the randomNumber: " + randomNumber)
+              console.log("==============selected==============")
+              console.log(selected); 
+
+              db.Answers.findAll({
+                where: {
+                  email: dbAnswers.email
+                }
+              }).then(function(results) {
+                  // console.log(results)
+                  db.Plans.create({
+                  user_id: results[0].dataValues.id, 
+                  match_id: selected.id, 
+                  date: selected.date, 
+                  lat: selected.lat, 
+                  lng: selected.lng, 
+                  time: selected.time, 
+                  cuisine: selected.cuisine, 
+                  price: selected.price 
+                }).then(function(results) {
+                  console.log("=========plans=======")
+                  console.log(results.dataValues)
+                })
+              })
+
+              } else {
+                console.log("no available meal buddies")
               }
-              console.log("======commonArr========")
-              console.log(commonArr)
-
-            var randomNumber = Math.floor(Math.random()*commonArr.length); 
-            var selected = commonArr[randomNumber]; 
-            console.log("this is the randomNumber: " + randomNumber)
-            console.log("==============selected==============")
-            console.log(selected); 
-            } else {
-              console.log("no available meal buddies")
-            }
-                
-
-            
 
           })
         } else {
@@ -112,6 +131,26 @@ module.exports = function(app) {
               var selected = commonArr[randomNumber]; 
               console.log("================selected=================")
               console.log(selected); 
+              db.Answers.findAll({
+                where: {
+                  email: dbAnswers.email
+                }
+              }).then(function(results) {
+                  // console.log(results)
+                  db.Plans.create({
+                  user_id: results[0].dataValues.id, 
+                  match_id: selected.id, 
+                  date: selected.date, 
+                  lat: selected.lat, 
+                  lng: selected.lng, 
+                  time: selected.time, 
+                  cuisine: selected.cuisine, 
+                  price: selected.price 
+                }).then(function(results) {
+                  console.log("=========plans=======")
+                  console.log(results.dataValues)
+                })
+              })
             } else {
               console.log("no available meal buddies")
             }
@@ -119,7 +158,7 @@ module.exports = function(app) {
         }
     })
   })
-
+  
 
 }
 

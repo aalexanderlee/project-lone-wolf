@@ -13,7 +13,7 @@
 			</div>
 			<div class="authentication-body">
 				<div class="login">
-					<form action="/login" method="POST">
+					<form action="/login" method="POST" onsubmit="return validateForm()">
 						<div class="input-group whole">
 							<input type="email" class="form-control authentication-input" id="login-email" name="email" placeholder="Email">
 						</div>
@@ -46,4 +46,27 @@
 		$("body").css("width", "100%");
 	};
 	changeBackground();
+
+	function resetCSS() {
+		$("#login-email").css("border", "1px solid #cccccc");
+		$("#login-password").css("border", "1px solid #cccccc");
+	};
+
+	function validateForm() {
+		resetCSS(); 
+		let valid = true;
+		
+		// If user does not provide an email 
+		if (!$("#login-email").val()) {
+			$("#login-email").css("border", "1px solid #a94442");
+			valid = false;
+		}
+		// If user does not provide a password 
+		if (!$("#login-password").val()) {
+			$("#login-password").css("border", "1px solid #a94442");
+			valid = false;
+		}
+		return valid;
+	};
+
 </script>

@@ -156,7 +156,7 @@ a.anchor {
 	width: 100%;
 }
 
-#signup-first-name, #signup-birthday {
+#signup-first-name, #signup-age {
 	border-radius: 0px;
 	float: left;
 	width: 50%;
@@ -168,7 +168,7 @@ a.anchor {
 	width: 50%;
 }
 
-#signup-gender {
+#signup-age, #signup-gender {
 	border: none;
 	outline: 1px solid #cccccc;
 	outline-offset: -1px;
@@ -180,7 +180,7 @@ a.anchor {
 }
 
 #signup-email {
-	margin-bottom: 10px;
+	margin-top: 10px;
 }
 
 input[type="password"]::-webkit-input-placeholder {
@@ -283,7 +283,7 @@ button.accordion.active:after {
 }
 
 .panel-content {
-	font-family: 'Muli', sans-serif;
+	font-family: 'Montserrat', sans-serif;
 	padding-bottom: 20px;
 	padding-top: 20px;
 }
@@ -387,29 +387,38 @@ input[type=radio] {
 	margin-bottom: 30px;
 }
 
-/*#survey-date-error, 
-#survey-location-error,
-#survey-gender-error,
-#survey-age-error,
-#survey-meal-error,
-#survey-cuisine-error,
-#survey-price-range-error {
-	color: #a94442;
-	display: none;
-	font-size: 12px;
-}
-*/
-
-#closest-match-name {
+#closest-match-first-name-header,
+#closest-match-last-name {
 	font-size: 25px;
-	margin-top: 10px;
 }
 
 #closest-match-image {
 	float: left;
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 	margin-right: 20px;
 	width: 300px;
+}
+
+.pac-container {
+	z-index: 10000 !important;
+}
+
+#no-results, #match-results {
+	display: none;
+}
+
+#match-results {
+	font-size: 15px;
+}
+
+#no-results {
+	font-size: 18px;
+}
+
+#empty-potential, #empty-past {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 17px;
+	text-align: center;
 }
 
 @media screen and (max-width: 768px) {

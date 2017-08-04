@@ -8,44 +8,53 @@ module.exports = function(sequelize, DataTypes) {
 			type: DataTypes.STRING,
 			allowNull: false
 		},
-		birthday: {
-			type: DataTypes.DATE,
-			allowNull: false, 
-			validate: {
-				isDate: true
-			}
-		},
-		image_url: {
-			type: DataTypes.STRING,
-			allowNull: false, 
-			validate: {
-				isUrl: true
-			}
-		},
 		email: {
 			type: DataTypes.STRING,
 			allowNull: false, 
 			validate: {
 				isEmail: true
 			}
-		}
-		// password: {
-			// type: DataTypes.VIRTUAL
-			// set: function(val) {
-			// 	this.setDataValue("password", val);
-			// 	this.setDataValue("password_hash", this.salt + val);
-			// },
-			// validate: {
-			// 	isLongEnough: function(val) {
-			// 		if (val.length < 7) {
-			// 			throw new Error("Please choose a longer password");
-			// 		}
-			// 	}
-			// }
+		},
+		about: {
+			type: DataTypes.TEXT,
+			allowNull: false
+		},
+		image: {
+			type: DataTypes.STRING,
+			allowNull: false, 
+			validate: {
+				isUrl: true
+			}
+		},
+		age: {
+			type: DataTypes.STRING,
+			allowNull: false
+		},
+		gender: {
+			type: DataTypes.STRING,
+			allowNull: false
+		},
+		// phone: {
+		// 	type: DataTypes.STRING,
+		// 	allowNull: false
 		// },
-		// password_hash: {
-		// 	type: DataTypes.STRING
-		// }
+		password: {
+			type: DataTypes.STRING,
+			allowNull: false
+		}
 	});
+
+	user.associate = function(models) {
+		user.hasMany(models.plan, {
+			onDelete: "CASCADE"
+		});
+	};
+
+	user.associate = function(models) {
+		user.hasMany(models.response, {
+			onDelete: "CASCADE"
+		});
+	};
+
 	return user;
 };

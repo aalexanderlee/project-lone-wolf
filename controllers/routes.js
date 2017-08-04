@@ -203,7 +203,7 @@ router.post("/home", isLoggedIn, function(req, res) {
 						console.log(choice);
 						var splitCuisines = choice.cuisine.split(",");
 						splitCuisines.forEach(function(cuisine) {
-							if (cuisinePreferences.indexOf(cuisine)) {
+							if (cuisinePreferences.indexOf(cuisine) >= 0) {
 								possibleMatches.push(choice);
 							}
 						})
